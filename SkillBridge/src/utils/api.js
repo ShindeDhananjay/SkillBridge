@@ -1,4 +1,4 @@
-const API_BASE = process.env.REACT_APP_API_URL || 'https://skillbridge-p7h3.onrender.com/api;
+const API_BASE = 'https://skillbridge-p7h3.onrender.com/api;
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
