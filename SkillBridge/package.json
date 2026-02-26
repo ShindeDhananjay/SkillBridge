@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
-    "server": "node server/server.js",
-    "dev": "concurrently \"npm start\" \"npm run server\""
+    "dev": "concurrently \"react-scripts start\" \"node server/server.js\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
