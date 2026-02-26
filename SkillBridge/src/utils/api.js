@@ -1,4 +1,4 @@
-const API_BASE = 'https://skillbridge-p7h3.onrender.com/api;
+const API_BASE = 'https://skillbridge-p7h3.onrender.com/api';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
