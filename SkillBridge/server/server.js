@@ -1,17 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-
-// Load env vars
-dotenv.config({ path: require('path').resolve(__dirname, '..', '.env') });
-
-// Connect to MongoDB
-connectDB();
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -21,22 +13,20 @@ app.use('/api/projects', require('./routes/projects'));
 app.use('/api/bids', require('./routes/bids'));
 app.use('/api/reviews', require('./routes/reviews'));
 
-// Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'SkillBridge API is running' });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-
-const path = require("path");
-
-// Serve React build files
+// Serve React build
 app.use(express.static(path.join(__dirname, "../build")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
+
+// 🔥 LISTEN MUST BE LAST
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
